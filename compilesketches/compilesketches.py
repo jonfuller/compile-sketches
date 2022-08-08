@@ -896,9 +896,9 @@ class CompileSketches:
                 shutil.rmtree(path=cache_path)
         start_time = time.monotonic()
         compilation_data = self.run_arduino_cli_command(
-            command=compilation_command, enable_output=self.RunCommandOutput.NONE, exit_on_failure=False)
+            command=compilation_command, enable_output=self.get_run_command_output_level(), exit_on_failure=False)
         diff_time = time.monotonic() - start_time
-
+            
         # Group compilation output to make the log easy to read
         # https://github.com/actions/toolkit/blob/master/docs/commands.md#group-and-ungroup-log-lines
         print("::group::Compiling sketch:", path_relative_to_workspace(path=sketch_path))
